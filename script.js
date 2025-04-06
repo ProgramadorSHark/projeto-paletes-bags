@@ -1,68 +1,26 @@
 function atualizarTotalPaletes() {
-  const areaSelecionada = document.getElementById("area").value;
-  const inputPaletes = document.getElementById("totalPaletes");
-
-  switch (areaSelecionada) {
-      case "armz01-l":
-          inputPaletes.value = 1;
-          break;
-      case "armz01-c":
-          inputPaletes.value = 2;
-          break;
-      case "armz02-l":
-          inputPaletes.value = 3;
-          break;
-      case "armz02-c":
-          inputPaletes.value = 4;
-          break;
-      case "armz03-l":
-          inputPaletes.value = 5;
-          break;
-      case "armz03-c":
-          inputPaletes.value = 6;
-          break;
-      case "armz04-l":
-          inputPaletes.value = 7;
-          break;
-      case "armz04-c":
-          inputPaletes.value = 8;
-          break;
-      default:
-          inputPaletes.value = "";
-          break;
+    const area = document.getElementById("area").value;
+    const totalPaletes = document.getElementById("totalPaletes");
+  
+    const valores = {
+      "armz01-l": 1,
+      "armz01-c": 2,
+      "armz02-l": 3,
+      "armz02-c": 4,
+      "armz03-l": 5,
+      "armz03-c": 6,
+      "armz04-l": 7,
+      "armz04-c": 8
+    };
+  
+    totalPaletes.value = valores[area] || "";
   }
-}
-
-function calcular() {
-  const total = parseInt(document.getElementById("totalPaletes").value) || 0;
-  const remover = parseInt(document.getElementById("paletesRemover").value) || 0;
-  const multiplicador = parseInt(document.getElementById("multiplicador").value) || 0;
-  const bagsAvulsos = parseInt(document.getElementById("bagsAvulsos").value) || 0;
-
-  const restantes = total - remover;
-  const totalBags = restantes * multiplicador;
-  const resultadoFinal = totalBags + bagsAvulsos;
-
-  document.getElementById("resultadoRestantes").innerText = `Paletes restantes: ${restantes}`;
-  document.getElementById("resultadoMultiplicacao").innerText = `Total de Bags (multiplicado): ${totalBags}`;
-  document.getElementById("resultadoFinal").innerText = `Total Final (com bags avulsos): ${resultadoFinal}`;
-}
-
-function limparCampos() {
-  document.getElementById("area").value = "";
-  document.getElementById("totalPaletes").value = "";
-  document.getElementById("paletesRemover").value = "";
-  document.getElementById("multiplicador").value = "";
-  document.getElementById("bagsAvulsos").value = "";
-  document.getElementById("resultadoRestantes").innerText = "";
-  document.getElementById("resultadoMultiplicacao").innerText = "";
-  document.getElementById("resultadoFinal").innerText = "";
-}
-function calcular() {
+  
+  function calcular() {
     const total = parseInt(document.getElementById("totalPaletes").value);
     const remover = parseInt(document.getElementById("paletesRemover").value);
     const multiplicador = parseInt(document.getElementById("multiplicador").value);
-    const bagsAvulsos = parseInt(document.getElementById("bagsAvulsos").value);
+    const avulsos = parseInt(document.getElementById("bagsAvulsos").value) || 0;
   
     if (isNaN(total) || isNaN(remover) || isNaN(multiplicador)) {
       alert("Por favor, preencha todos os campos obrigatórios corretamente.");
@@ -71,10 +29,18 @@ function calcular() {
   
     const restantes = total - remover;
     const totalBags = restantes * multiplicador;
-    const resultadoFinal = totalBags + (isNaN(bagsAvulsos) ? 0 : bagsAvulsos);
+    const final = totalBags + avulsos;
   
     document.getElementById("resultadoRestantes").innerText = `Paletes restantes: ${restantes}`;
     document.getElementById("resultadoMultiplicacao").innerText = `Total de Bags (multiplicado): ${totalBags}`;
-    document.getElementById("resultadoFinal").innerText = `Total Final (com bags avulsos): ${resultadoFinal}`;
+    document.getElementById("resultadoFinal").innerText = `Total Final (com bags avulsos): ${final}`;
+  }
+  
+  function limparCampos() {
+    const ids = ["area", "totalPaletes", "paletesRemover", "multiplicador", "bagsAvulsos"];
+    ids.forEach(id => document.getElementById(id).value = "");
+  
+    ["resultadoRestantes", "resultadoMultiplicacao", "resultadoFinal"]
+      .forEach(id => document.getElementById(id).innerText = "");
   }
   
