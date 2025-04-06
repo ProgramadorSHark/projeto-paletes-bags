@@ -21,15 +21,17 @@
     padding: 30px;
     border-radius: 12px;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-    max-width: 400px;
     width: 100%;
+    max-width: 500px;
+    transition: all 0.3s ease;
   }
   
   /* Título */
-  h2 {
+  h1 {
     text-align: center;
-    margin-bottom: 20px;
+    margin-bottom: 25px;
     color: #222;
+    font-size: 1.8rem;
   }
   
   /* Inputs e selects */
@@ -47,10 +49,10 @@
     margin-top: 6px;
     border: 1px solid #ccc;
     border-radius: 6px;
-    font-size: 16px;
+    font-size: 1rem;
   }
   
-  /* Botão */
+  /* Botões */
   button {
     margin-top: 20px;
     width: 100%;
@@ -60,7 +62,7 @@
     font-weight: bold;
     border: none;
     border-radius: 6px;
-    font-size: 16px;
+    font-size: 1rem;
     cursor: pointer;
     transition: background-color 0.3s ease;
   }
@@ -69,33 +71,55 @@
     background-color: #218838;
   }
   
+  /* Botão extra (como o de limpar) */
+  button:nth-of-type(2) {
+    background-color: #dc3545;
+  }
+  
+  button:nth-of-type(2):hover {
+    background-color: #c82333;
+  }
+  
   /* Resultados */
-  #resultado {
+  #resultadoFinal {
     margin-top: 25px;
     padding-top: 15px;
     border-top: 1px solid #ccc;
     color: #222;
-    font-size: 16px;
+    font-size: 1.1rem;
+    text-align: center;
   }
   
   /* Responsividade */
-  @media (max-width: 500px) {
+  @media (max-width: 768px) {
     .container {
       padding: 20px;
     }
   
-    h2 {
-      font-size: 20px;
+    h1 {
+      font-size: 1.5rem;
     }
   
     input,
-    select {
-      font-size: 14px;
-      padding: 8px;
+    select,
+    button {
+      font-size: 0.95rem;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .container {
+      padding: 15px;
     }
   
+    h1 {
+      font-size: 1.3rem;
+    }
+  
+    input,
+    select,
     button {
-      font-size: 14px;
+      font-size: 0.9rem;
       padding: 10px;
     }
   }
