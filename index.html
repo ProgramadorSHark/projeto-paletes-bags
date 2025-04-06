@@ -25,16 +25,16 @@
     </select>
 
     <label for="totalPaletes">Total de Paletes:</label>
-    <input type="number" id="totalPaletes" placeholder="Ex: 30" min="0">
+    <input type="number" id="totalPaletes" placeholder="Ex: 30" min="1" required>
 
     <label for="paletesRemover">Remover cabeçalho:</label>
-    <input type="number" id="paletesRemover" placeholder="Ex: 5" min="0">
+    <input type="number" id="paletesRemover" placeholder="Ex: 5" max="4" min="1" required>
 
     <label for="multiplicador">Multiplicador:</label>
-    <input type="number" id="multiplicador" placeholder="Ex: 8" min="1">
+    <input type="number" id="multiplicador" placeholder="Ex: 8" min="1" required>
 
     <label for="bagsAvulsos">Unidades de Bags (dos cabeçalho):</label>
-    <input type="number" id="bagsAvulsos" placeholder="Ex: 10" min="0">
+    <input type="number" id="bagsAvulsos" placeholder="Ex: 10" min="1" required>
 
     <div class="botoes">
       <button onclick="calcular()" aria-label="Calcular resultado">Calcular</button>
