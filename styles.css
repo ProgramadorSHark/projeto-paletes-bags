@@ -94,6 +94,7 @@
   @media (max-width: 768px) {
     .container {
       padding: 20px;
+      width: 90vw;
     }
   
     h1 {
