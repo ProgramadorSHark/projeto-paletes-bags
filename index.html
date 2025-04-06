@@ -2,6 +2,7 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Calculadora de Paletes</title>
   <link rel="stylesheet" href="styles.css">
 </head>
@@ -9,20 +10,18 @@
   <div class="container">
     <h1>Calculadora de Paletes</h1>
 
-    <!-- Seleção da Área -->
-<label for="area">Área:</label>
-<select id="area" onchange="atualizarTotalPaletes()">
-  <option value="">Selecione uma área</option>
-  <option value="armz01-l">ARMZ 01 - Linhas Laterais</option>
-  <option value="armz01-c">ARMZ 01 - Linhas Centrais</option>
-  <option value="armz02-l">ARMZ 02 - linhas Laterais</option>
-  <option value="armz02-c">ARMZ 02 - linhas Centrais</option>
-  <option value="armz03-l">ARMZ 03 - linhas Laterais</option>
-  <option value="armz03-c">ARMZ 03 - linhas Laterais</option>
-  <option value="armz04-l">ARMZ 04 - linhas Laterais</option>
-  <option value="armz04-c">ARMZ 04 - linhas Centrais</option>
-</select>
-
+    <label for="area">Área:</label>
+    <select id="area" onchange="atualizarTotalPaletes()">
+      <option value="">Selecione uma área</option>
+      <option value="armz01-l">ARMZ 01 - Linhas Laterais</option>
+      <option value="armz01-c">ARMZ 01 - Linhas Centrais</option>
+      <option value="armz02-l">ARMZ 02 - Linhas Laterais</option>
+      <option value="armz02-c">ARMZ 02 - Linhas Centrais</option>
+      <option value="armz03-l">ARMZ 03 - Linhas Laterais</option>
+      <option value="armz03-c">ARMZ 03 - Linhas Centrais</option>
+      <option value="armz04-l">ARMZ 04 - Linhas Laterais</option>
+      <option value="armz04-c">ARMZ 04 - Linhas Centrais</option>
+    </select>
 
     <label for="totalPaletes">Total de Paletes:</label>
     <input type="number" id="totalPaletes" placeholder="Ex: 30" min="0">
@@ -36,11 +35,23 @@
     <label for="bagsAvulsos">Unidades de Bags (dos cabeçalho):</label>
     <input type="number" id="bagsAvulsos" placeholder="Ex: 10" min="0">
 
-    <button onclick="calcular()">Calcular</button>
+    <div class="buttons">
+      <button onclick="calcular()">Calcular</button>
+      <button class="btn-clear" onclick="limparCampos()">Limpar</button>
+      <button class="btn-export" onclick="exportarPDF()">Exportar PDF</button>
+    </div>
+
+    <div id="mensagemErro"></div>
 
     <h2>Resultados:</h2>
-    
+    <p id="resultadoRestantes"></p>
+    <p id="resultadoMultiplicacao"></p>
     <p id="resultadoFinal"></p>
+
+    <div id="historicoContainer">
+      <h3>Histórico:</h3>
+      <ul id="historico"></ul>
+    </div>
   </div>
 
   <script src="script.js"></script>
