@@ -47,3 +47,16 @@ function calcular() {
     
     document.getElementById("resultadoFinal").innerText = `Total Final: ${resultadoFinal}`;
 }
+function limparDados() {
+    localStorage.removeItem("dadosCalculadora");
+  
+    document.getElementById("area").value = "";
+    document.getElementById("totalPaletes").value = "";
+    document.getElementById("paletesRemover").value = "";
+    document.getElementById("multiplicador").value = "";
+    document.getElementById("bagsAvulsos").value = "";
+    document.getElementById("resultadoFinal").innerText = "";
+  
+    alert("Dados limpos com sucesso!");
+  }
+  
