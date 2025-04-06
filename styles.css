@@ -20,7 +20,7 @@ body {
   background-color: #fff;
   border-radius: 12px;
   padding: 25px;
-  width: 100%;
+  width: 90vw;
   max-width: 480px;
   box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
   box-sizing: border-box;
@@ -49,6 +49,7 @@ label {
 }
 
 input, select {
+  margin-bottom: 15px;
   width: 100%;
   padding: 10px;
   font-size: 1rem;
@@ -65,12 +66,13 @@ input:focus, select:focus {
   box-shadow: 0 0 5px rgba(40, 167, 69, 0.5);
 }
 
-.buttons {
+.botoes {
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: column;
   gap: 10px;
   margin-top: 15px;
 }
+
 
 button {
   flex: 1 1 calc(50% - 10px);
@@ -129,25 +131,36 @@ button:first-of-type:hover {
 }
 
 @media (max-width: 600px) {
-  .buttons {
-    flex-direction: column;
-  }
-
-  button {
-    flex: 1 1 100%;
-  }
-
-  .container {
-    padding: 20px;
-    border-radius: 10px;
-    max-width: 95vw;
-  }
-
   h1 {
-    font-size: 1.4rem;
+    font-size: 1.3rem;
   }
 
   input, select, button {
     font-size: 0.95rem;
+  }
+
+  .container {
+    padding: 15px;
+    border-radius: 10px;
+  }
+}
+@media (max-width: 480px) {
+  .container {
+    padding: 15px;
+    gap: 12px;
+  }
+
+  label {
+    font-size: 1rem;
+    margin-top: 8px;
+  }
+
+  input, select, button {
+    font-size: 1.05rem;
+    padding: 12px;
+  }
+
+  button {
+    min-height: 50px;
   }
 }

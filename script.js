@@ -58,3 +58,23 @@ function limparCampos() {
   document.getElementById("resultadoMultiplicacao").innerText = "";
   document.getElementById("resultadoFinal").innerText = "";
 }
+function calcular() {
+    const total = parseInt(document.getElementById("totalPaletes").value);
+    const remover = parseInt(document.getElementById("paletesRemover").value);
+    const multiplicador = parseInt(document.getElementById("multiplicador").value);
+    const bagsAvulsos = parseInt(document.getElementById("bagsAvulsos").value);
+  
+    if (isNaN(total) || isNaN(remover) || isNaN(multiplicador)) {
+      alert("Por favor, preencha todos os campos obrigatórios corretamente.");
+      return;
+    }
+  
+    const restantes = total - remover;
+    const totalBags = restantes * multiplicador;
+    const resultadoFinal = totalBags + (isNaN(bagsAvulsos) ? 0 : bagsAvulsos);
+  
+    document.getElementById("resultadoRestantes").innerText = `Paletes restantes: ${restantes}`;
+    document.getElementById("resultadoMultiplicacao").innerText = `Total de Bags (multiplicado): ${totalBags}`;
+    document.getElementById("resultadoFinal").innerText = `Total Final (com bags avulsos): ${resultadoFinal}`;
+  }
+  
