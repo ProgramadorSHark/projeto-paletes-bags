@@ -1,53 +1,62 @@
+function atualizarTotalPaletes() {
+    const areaSelecionada = document.getElementById("area").value;
+    const inputPaletes = document.getElementById("totalPaletes");
+
+    switch (areaSelecionada) {
+        case "armz01-l":
+            inputPaletes.value = 1;
+            break;
+        case "armz01-c":
+            inputPaletes.value = 2;
+            break;
+        case "armz02-l":
+            inputPaletes.value = 3;
+            break;
+        case "armz02-c":
+            inputPaletes.value = 4;
+            break;
+        case "armz03-l":
+            inputPaletes.value = 5;
+            break;
+        case "armz03-c":
+            inputPaletes.value = 6;
+            break;
+        case "armz04-l":
+            inputPaletes.value = 7;
+            break;
+        case "armz04-c":
+            inputPaletes.value = 8;
+            break;
+        default:
+            inputPaletes.value = "";
+            break;
+    }
+}
+
+
 function calcular() {
-  const area = document.getElementById("area").value;
-  const totalPaletes = document.getElementById("totalPaletes").value;
-  const removerCabecalho = document.getElementById("removerCabecalho").value;
-  const multiplicador = document.getElementById("multiplicador").value;
-  const unidadeBags = document.getElementById("unidadeBags").value;
+    const total = parseInt(document.getElementById("totalPaletes").value) || 0;
+    const remover = parseInt(document.getElementById("paletesRemover").value) || 0;
+    const multiplicador = parseInt(document.getElementById("multiplicador").value) || 0;
+    const bagsAvulsos = parseInt(document.getElementById("bagsAvulsos").value) || 0;
 
-  // Validação
-  if (!area || !totalPaletes || !removerCabecalho || !multiplicador || !unidadeBags) {
-    alert("Preencha todos os campos!");
-    return;
-  }
+    const restantes = total - remover;
+    const totalBags = restantes * multiplicador;
+    const resultadoFinal = totalBags + bagsAvulsos;
 
-  const total = (parseInt(totalPaletes) - parseInt(removerCabecalho)) * parseInt(multiplicador) + parseInt(unidadeBags);
-
-  document.getElementById("resultadoFinal").innerHTML = `
-    <strong>Área:</strong> ${area} <br/>
-    <strong>Total de Bags:</strong> ${total}
-  `;
-
-  // Salvar dados no localStorage
-  const dados = {
-    area,
-    totalPaletes,
-    removerCabecalho,
-    multiplicador,
-    unidadeBags
-  };
-
-  localStorage.setItem("dadosPaletes", JSON.stringify(dados));
+    
+    document.getElementById("resultadoFinal").innerText = `Total Final: ${resultadoFinal}`;
 }
-
 function limparDados() {
-  document.getElementById("area").value = "";
-  document.getElementById("totalPaletes").value = "";
-  document.getElementById("removerCabecalho").value = "";
-  document.getElementById("multiplicador").value = "";
-  document.getElementById("unidadeBags").value = "";
-  document.getElementById("resultadoFinal").innerHTML = "";
-  localStorage.removeItem("dadosPaletes");
-}
-
-// Carregar dados ao abrir a página
-window.onload = () => {
-  const dadosSalvos = JSON.parse(localStorage.getItem("dadosPaletes"));
-  if (dadosSalvos) {
-    document.getElementById("area").value = dadosSalvos.area;
-    document.getElementById("totalPaletes").value = dadosSalvos.totalPaletes;
-    document.getElementById("removerCabecalho").value = dadosSalvos.removerCabecalho;
-    document.getElementById("multiplicador").value = dadosSalvos.multiplicador;
-    document.getElementById("unidadeBags").value = dadosSalvos.unidadeBags;
+    localStorage.removeItem("dadosCalculadora");
+  
+    document.getElementById("area").value = "";
+    document.getElementById("totalPaletes").value = "";
+    document.getElementById("paletesRemover").value = "";
+    document.getElementById("multiplicador").value = "";
+    document.getElementById("bagsAvulsos").value = "";
+    document.getElementById("resultadoFinal").innerText = "";
+  
+    alert("Dados limpos com sucesso!");
   }
-};
+  
