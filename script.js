@@ -27,9 +27,8 @@ function atualizarTotalPaletes() {
     const totalBags = restantes * multiplicador;
     const final = totalBags + avulsos;
   
-    document.getElementById("resultadoRestantes").innerText = `Paletes restantes: ${restantes}`;
-    document.getElementById("resultadoMultiplicacao").innerText = `Total de Bags (multiplicado): ${totalBags}`;
-    document.getElementById("resultadoFinal").innerText = `Total Final (com bags avulsos): ${final}`;
+    
+    document.getElementById("resultadoFinal").innerText = `Total (Na linha): ${final}`;
   }
   
   function limparCampos() {
