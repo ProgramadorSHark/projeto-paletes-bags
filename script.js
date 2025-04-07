@@ -3,14 +3,10 @@ function atualizarTotalPaletes() {
     const totalPaletes = document.getElementById("totalPaletes");
   
     const valores = {
-      "armz01-l": 1,
-      "armz01-c": 2,
-      "armz02-l": 3,
-      "armz02-c": 4,
-      "armz03-l": 5,
-      "armz03-c": 6,
-      "armz04-l": 7,
-      "armz04-c": 8
+      "armz01e02-l": 21,
+      "armz01e02-c": 6,
+      "armz03e04-l": 17,
+      "armz03e04-c": 10
     };
   
     totalPaletes.value = valores[area] || "";
